@@ -1,0 +1,43 @@
+#include <bits/stdc++.h>
+void identice(int a,int b)
+{
+    bool ok=true;
+    int nrcifa=(int)log10(a)+1;
+    int primacifa;
+    primacifa=a/pow(10,(int)log10(a));
+    int primu=0;
+    while(nrcifa)
+    {
+        primu*=10;
+        primu+=1;
+        nrcifa--;
+    }
+    if(primu*primacifa>=a){
+        ok=false;
+        std::cout<<primu*primacifa<<' ';
+        primacifa++;
+    }
+    else
+    {
+        primacifa++;
+    }
+    if(primacifa==10)
+    {
+        primacifa=1;
+        primu*=10;
+        primu+=1;
+    }
+    while(primu*primacifa>=a&&primu*primacifa<=b)
+    {
+        ok=false;
+        std::cout<<primu*primacifa<<' ';
+        primacifa++;
+        if(primacifa==10)
+        {
+            primacifa=1;
+            primu*=10;
+            primu+=1;
+        }
+    }
+    if(ok)std::cout<<"nu exista";
+}
